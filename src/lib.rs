@@ -12,6 +12,7 @@
 #![deny(missing_docs)]
 #![warn(rust_2018_idioms)]
 #![allow(clippy::type_complexity)]
+#![cfg_attr(not(any(feature = "std", test)), no_std)]
 
 //! # Description
 //!
@@ -26,13 +27,13 @@ use allocator_api2::{
     alloc::{Allocator, Global},
     vec::{self, Vec},
 };
-use std::cmp::{max, Ordering};
-use std::fmt;
-use std::hash::{Hash, Hasher};
-use std::iter::{Enumerate, FilterMap, FromIterator};
-use std::mem::{replace, swap};
-use std::ops::{Index, IndexMut};
-use std::slice;
+use core::cmp::{max, Ordering};
+use core::fmt;
+use core::hash::{Hash, Hasher};
+use core::iter::{Enumerate, FilterMap, FromIterator};
+use core::mem::{replace, swap};
+use core::ops::{Index, IndexMut};
+use core::slice;
 
 /// A map optimized for small integer keys.
 ///
